@@ -36,6 +36,7 @@ function Note({ title, content, onDelete, id }) {
       .then((docRef) => {
         console.log("okhhh");
         setShow(false);
+        window.location.reload();
       })
       .catch((error) => {});
   }
@@ -82,6 +83,7 @@ function Note({ title, content, onDelete, id }) {
               name="content"
               placeholder="Take a note..."
               onChange={handleChange}
+              style={{ width: "95%" }}
             ></textarea>
           </p>
         </Modal.Body>

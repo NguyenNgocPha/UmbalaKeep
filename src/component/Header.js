@@ -13,7 +13,7 @@ function Header() {
     auth
       .signOut()
       .then(() => {
-        // window.location.href = "./";
+        window.location.href = "./";
       })
       .catch((error) => alert(error.message));
   };
