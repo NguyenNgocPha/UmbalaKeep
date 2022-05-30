@@ -3,8 +3,9 @@ import { MdDelete } from "react-icons/md";
 import { auth, db } from "../firebase-config";
 import { TiEdit } from "react-icons/ti";
 import { Button, Modal } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-function Note({ title, content, onDelete, id }) {
+function Note({ title, content, onDelete, id, onUpdate }) {
   const [show, setShow] = useState(false);
   const [user, setUser] = useState([]);
 
@@ -36,7 +37,7 @@ function Note({ title, content, onDelete, id }) {
       .then((docRef) => {
         console.log("okhhh");
         setShow(false);
-        window.location.reload();
+        onUpdate();
       })
       .catch((error) => {});
   }

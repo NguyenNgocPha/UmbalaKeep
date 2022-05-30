@@ -113,6 +113,7 @@ function Home(props) {
           title={note.title}
           content={note.content}
           onDelete={deleteNotes}
+          onUpdate={UpdateNote}
         />
       ))}
     </div>
