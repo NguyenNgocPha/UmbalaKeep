@@ -17,7 +17,7 @@ function Login() {
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
       if (user) {
-        window.location.href = "/home";
+        window.location.href = "./home";
       }
     });
 
