@@ -6,14 +6,20 @@ import Home from "./home";
 import Footer from "./Footer";
 import Trash from "./Trash";
 import SignUp from "./login/SignUp";
-
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
 function Header() {
+  let navigate = useNavigate();
   const handleSignOut = () => {
     auth
       .signOut()
       .then(() => {
-        window.location.href = "/sign-in";
+        navigate(`/sign-in`);
       })
       .catch((error) => alert(error.message));
   };
