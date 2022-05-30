@@ -2,11 +2,31 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "../firebase-config";
 import CreateArea from "./CreateArea";
 import Note from "./Note";
+import { useNavigate } from "react-router-dom";
 
 function Home(props) {
+  let navigate = useNavigate();
   const [notes, setNotes] = useState([]);
 
   const [user, setUser] = useState([]);
+
+  function UpdateNote() {
+    const docRef = db
+      .collection("users")
+      .doc(user.uid)
+      .collection("notes")
+      .get()
+      .then((query) => {
+        var a = [];
+        query.forEach((doc) => {
+          const data1 = doc.data();
+          data1.id = doc.id;
+          a.push(data1);
+        });
+        setNotes(a);
+      });
+  }
+
   function addNote(newNote) {
     console.log(newNote);
     const myDoc = db
@@ -16,7 +36,7 @@ function Home(props) {
       .add(newNote)
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
-        window.location.reload();
+        UpdateNote();
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
@@ -44,7 +64,7 @@ function Home(props) {
           .delete()
           .then((docRef) => {
             console.log("Delete: ok");
-            window.location.reload();
+            UpdateNote();
           })
           .catch((error) => {
             console.error("Error Delete document: ", error);

@@ -8,6 +8,23 @@ function Trash(props) {
   const [user, setUser] = useState([]);
  
 
+  function UpdateNote() {
+    const docRef = db
+      .collection("users")
+      .doc(user.uid)
+      .collection("trash")
+      .get()
+      .then((query) => {
+        var a = [];
+        query.forEach((doc) => {
+          const data1 = doc.data();
+          data1.id = doc.id;
+          a.push(data1);
+        });
+        setNotes(a);
+      });
+  }
+
   function restores(id) {
     let small_animals = notes.filter((animal) => {
       return animal.id === id;
@@ -29,7 +46,7 @@ function Trash(props) {
           .delete()
           .then((docRef) => {
             console.log("Delete: ok"+small_animals[0].id);
-            window.location.reload();
+            UpdateNote();
           })
           .catch((error) => {
             console.error("Error Delete document: ", error);
@@ -54,7 +71,7 @@ function Trash(props) {
       .delete()
       .then((docRef) => {
         console.log("ok");
-        window.location.reload();
+        UpdateNote();
         
       })
       .catch((error) => {
