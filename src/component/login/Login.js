@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   let navigate = useNavigate();
   const [data, setData] = useState("");
+  const chandleSignOut = () => {
+    navigate(`/sign-up`);
+  };
+
   const handleSignIn = () => {
     auth
       .signInWithEmailAndPassword(data.email, data.password)
@@ -66,7 +70,7 @@ function Login() {
               <p className="forgot-password text-start">
                 <span>
                   {" "}
-                  Not registered <a href="/sign-up">sign up?</a>
+                  Not registered <a onClick={chandleSignOut}>sign up?</a>
                 </span>
                 {/* <span style={{ float: "right" }}>
                 Forgot <a href="/home">password?</a>
