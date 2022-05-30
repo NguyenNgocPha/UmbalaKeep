@@ -17,7 +17,7 @@ function Login() {
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
       if (user) {
-        window.location.href = "./home";
+        window.location.href = "/home";
       }
     });
 
@@ -64,7 +64,7 @@ function Login() {
               <p className="forgot-password text-start">
                 <span>
                   {" "}
-                  Not registered <a href="/sign-up">sign up?</a>
+                  Not registered <a href="./sign-up">sign up?</a>
                 </span>
                 {/* <span style={{ float: "right" }}>
                 Forgot <a href="/home">password?</a>
