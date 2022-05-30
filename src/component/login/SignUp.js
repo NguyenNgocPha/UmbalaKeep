@@ -44,7 +44,7 @@ function SignUp() {
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
       if (user) {
-        // window.location.href = "./home";
+        navigate(`/sign-in`);
       }
     });
 
@@ -105,7 +105,7 @@ function SignUp() {
             </div>
             <div className="d-grid">
               <button
-                type="submit"
+                type="button"
                 className="btn btn-primary"
                 onClick={handleSignIn}
               >
