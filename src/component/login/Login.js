@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../../css/SignUp.css";
 import { auth, db } from "../../firebase-config";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  let navigate = useNavigate();
   const [data, setData] = useState("");
   const handleSignIn = () => {
     auth
@@ -17,7 +19,7 @@ function Login() {
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
       if (user) {
-        window.location.href = "./home";
+        navigate(`/home`);
       }
     });
 
@@ -64,7 +66,7 @@ function Login() {
               <p className="forgot-password text-start">
                 <span>
                   {" "}
-                  Not registered <a href="./sign-up">sign up?</a>
+                  Not registered <a href="/sign-up">sign up?</a>
                 </span>
                 {/* <span style={{ float: "right" }}>
                 Forgot <a href="/home">password?</a>
