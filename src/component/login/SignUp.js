@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "../../css/SignUp.css";
 import { auth, db } from "../../firebase-config";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+  let navigate = useNavigate();
   const [data, setData] = useState("");
+  const chandleSignIn = () => {
+    navigate(`/sign-in`);
+  };
+
   const handleSignIn = () => {
     if (data.name === "" || data.age < 0) {
       alert("Please fill full name and valid age!");
@@ -108,7 +114,10 @@ function SignUp() {
             </div>
             <div className="mb-3 row">
               <p className="forgot-password text-right">
-                Not registered <a href="/sign-in">sign in?</a>
+                Not registered{" "}
+                <a onClick={chandleSignIn} style={{ color: "#167bff" }}>
+                  sign in?
+                </a>
               </p>
             </div>
           </form>

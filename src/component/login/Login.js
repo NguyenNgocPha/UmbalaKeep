@@ -70,11 +70,11 @@ function Login() {
               <p className="forgot-password text-start">
                 <span>
                   {" "}
-                  Not registered <a onClick={chandleSignOut}>sign up?</a>
+                  Not registered{" "}
+                  <a onClick={chandleSignOut} style={{ color: "#167bff" }}>
+                    sign up?
+                  </a>
                 </span>
-                {/* <span style={{ float: "right" }}>
-                Forgot <a href="/home">password?</a>
-              </span> */}
               </p>
             </div>
           </form>

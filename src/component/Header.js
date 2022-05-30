@@ -126,7 +126,7 @@ function Header() {
             </div>
           </Link>
 
-          <Link to="/home/invoices" class="link">
+          <Link to="/" class="link">
             <div
               class="row"
               style={{ fontSize: 20, alignItems: "center", height: 48 }}
