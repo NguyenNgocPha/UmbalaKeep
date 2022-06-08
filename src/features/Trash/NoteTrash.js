@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { FaTrashRestoreAlt } from "react-icons/fa";
 
-function NoteTrash({ title, content, onRestores, id,onDelete }) {
+function NoteTrash({ title, content, onRestores, id, onDelete }) {
   useEffect(() => {
     console.log(id);
   }, []);
@@ -10,10 +10,10 @@ function NoteTrash({ title, content, onRestores, id,onDelete }) {
     <div className="note">
       <h1>{title}</h1>
       <p>{content}</p>
-      <button onClick={() => onRestores(id)}>
+      <button type="button" onClick={() => onRestores(id)}>
         <FaTrashRestoreAlt size={19} />
       </button>
-      <button onClick={() => onDelete(id)}>
+      <button type="button" onClick={() => onDelete(id)}>
         <MdDelete size={25} />
       </button>
     </div>

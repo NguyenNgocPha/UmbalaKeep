@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../css/SignUp.css";
-import { auth, db } from "../../firebase-config";
+import { auth, db } from "firebase-config";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {

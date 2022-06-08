@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
-import { auth, db } from "../firebase-config";
+import { auth, db } from "../../firebase-config";
 import { TiEdit } from "react-icons/ti";
 import { Button, Modal } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-
-function Note({ title, content, onDelete, id, onUpdate }) {
+import { useDispatch } from "react-redux";
+import { updateNote } from "app/noteSlice";
+function Note({ notes, onDelete }) {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [user, setUser] = useState([]);
 
@@ -13,8 +14,9 @@ function Note({ title, content, onDelete, id, onUpdate }) {
   const handleShow = () => setShow(true);
 
   const [note, setNote] = useState({
-    title: title,
-    content: content,
+    title: notes.title,
+    content: notes.content,
+    id: notes.id,
   });
 
   function handleChange(e) {
@@ -27,19 +29,10 @@ function Note({ title, content, onDelete, id, onUpdate }) {
     });
   }
 
-  function UpdateNote() {
-    const myDocss = db
-      .collection("users")
-      .doc(user.uid)
-      .collection("notes")
-      .doc(id)
-      .update(note)
-      .then((docRef) => {
-        console.log("okhhh");
-        setShow(false);
-        onUpdate();
-      })
-      .catch((error) => {});
+  async function UpdateNote() {
+    const action = updateNote(note);
+    const actionResult = await dispatch(action);
+    setShow(false);
   }
 
   useEffect(() => {
@@ -53,10 +46,10 @@ function Note({ title, content, onDelete, id, onUpdate }) {
   }, []);
   return (
     <div className="note">
-      <h1>{title}</h1>
-      <p>{content}</p>
+      <h1>{notes.title}</h1>
+      <p>{notes.content}</p>
 
-      <button onClick={() => onDelete(id)}>
+      <button onClick={() => onDelete(notes.id)}>
         <MdDelete size={25} />
       </button>
 
@@ -68,7 +61,7 @@ function Note({ title, content, onDelete, id, onUpdate }) {
         <Modal.Header closeButton>
           <Modal.Title>
             <input
-              defaultValue={title}
+              defaultValue={notes.title}
               type="text"
               placeholder="Title"
               name="title"
@@ -80,7 +73,7 @@ function Note({ title, content, onDelete, id, onUpdate }) {
           {" "}
           <p>
             <textarea
-              defaultValue={content}
+              defaultValue={notes.content}
               name="content"
               placeholder="Take a note..."
               onChange={handleChange}
