@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "css/Home.css";
-import { IoIosAdd } from "react-icons/io";
+import { IoMdColorPalette, IoIosAdd } from "react-icons/io";
 import { addNote } from "app/noteSlice";
 import { useDispatch } from "react-redux";
-
+import { AiOutlinePicture } from "react-icons/ai";
+import { MdPersonAddAlt1 } from "react-icons/md";
+import { BiBellPlus, BiUndo, BiRedo } from "react-icons/bi";
+import { RiInboxArchiveLine, RiMore2Fill } from "react-icons/ri";
 function CreateArea({ }) {
   const [isExpanded, setExpanded] = useState(false);
   const dispatch = useDispatch();
@@ -63,12 +66,28 @@ function CreateArea({ }) {
               name="content"
               placeholder="Take a note..."
               onChange={handleChange}
-              rows={isExpanded ? 3 : 1}
-            ></textarea>
+              rows={isExpanded ? 1 : 1}
+            >
+            </textarea>
+            <div class='textareaFooter' style={{ display: isExpanded ? 'flex' : 'none' }}>
+              <BiBellPlus size={20} style={{ marginRight: 30 }} />
+              <MdPersonAddAlt1 size={20} style={{ marginRight: 30 }} />
+              <IoMdColorPalette size={20} style={{ marginRight: 30 }} />
+              <AiOutlinePicture size={20} style={{ marginRight: 30 }} />
+              <RiInboxArchiveLine size={20} style={{ marginRight: 30 }} />
+              <RiMore2Fill size={20} style={{ marginRight: 30 }} />
+              <BiUndo size={20} style={{ marginRight: 30 }} />
+              <BiRedo size={20} style={{ marginRight: 30 }} />
+              <button type="button" onClick={submitButton} style={{ marginRight: 30 }}>add
+                <IoIosAdd size={20} />
+              </button>
+              <button type="button" onClick={ExithandleExpanded} style={{ marginRight: 30 }}>close
+
+              </button>
+            </div>
           </p>
-          <button type="button" onClick={submitButton}>
-            <IoIosAdd size={35} />
-          </button>
+          {/* <div class='textareaFooter'>   
+          </div> */}
         </div>
       </form>
     </div>

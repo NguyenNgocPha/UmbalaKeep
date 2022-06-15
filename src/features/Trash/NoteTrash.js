@@ -11,7 +11,7 @@ function NoteTrash({ title, content, onRestores, id, onDelete }) {
       <h1>{title}</h1>
       <p>{content}</p>
       <button type="button" onClick={() => onRestores(id)}>
-        <FaTrashRestoreAlt size={19} />
+        <FaTrashRestoreAlt size={19} color="red" />
       </button>
       <button type="button" onClick={() => onDelete(id)}>
         <MdDelete size={25} />

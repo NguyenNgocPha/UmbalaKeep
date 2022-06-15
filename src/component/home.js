@@ -4,7 +4,16 @@ import { auth, db } from "../firebase-config";
 import Notes from "../features/Notes";
 import Footer from "./Footer";
 import Trash from "../features/Trash";
+
 import SignUp from "../features/login/SignUp";
+import imdga from "asset/search.svg";
+import note from "asset/note.svg";
+import remin from "asset/remin.svg";
+import archive from "asset/archive.svg";
+import trash from "asset/trash.svg";
+import Archive from "./Archive";
+import { CgMenuGridO } from "react-icons/cg";
+import { AiOutlineSetting } from "react-icons/ai";
 import {
   BrowserRouter as Router,
   Routes,
@@ -28,7 +37,7 @@ function Header() {
       <div class="containerHeader">
         <div class="containerHeaderLeft">
           <div class="iconHeaderLeft">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars" width={50}></i>
           </div>
           <img
             src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
@@ -36,7 +45,11 @@ function Header() {
             width={40}
             height={40}
           ></img>
-          <div>UMBALA Keep</div>
+          <div
+            style={{ fontSize: 22, color: "rgb(95, 99, 104)", fontWeight: 400 }}
+          >
+            Keep
+          </div>
         </div>
         <div class="containerHeaderCenter">
           <div
@@ -51,12 +64,7 @@ function Header() {
             <form class="search-form">
               <div class="row" style={{ alignItems: "center" }}>
                 <div class="iconHeaderLeft">
-                  <i
-                    class="fa-solid fa-magnifying-glass"
-                    style={{
-                      color: "#A4A4A4",
-                    }}
-                  ></i>
+                  <img src={imdga} alt="no find" style={{ top: 0 }}></img>
                 </div>
                 <input
                   type="search"
@@ -88,7 +96,7 @@ function Header() {
                 ></i>
               </div>
               <div class="iconHeaderLeft">
-                <i class="fa-solid fa-gear"></i>
+                <AiOutlineSetting fontSize={25} />
               </div>
             </div>
           </div>
@@ -96,7 +104,7 @@ function Header() {
         <div class="containerHeaderRight">
           <div class="row">
             <div class="iconHeaderLeft">
-              <i class="fa-solid fa-table-cells"></i>
+              <CgMenuGridO fontSize={25} />
             </div>
             <div style={{ width: 150, height: 48 }}>
               <img
@@ -112,57 +120,64 @@ function Header() {
 
       <div class="containerCenter">
         <div class="containerCenterLeft">
-          <Link to="/home/" class="link">
-            <div
-              class="row"
-              style={{ fontSize: 20, alignItems: "center", height: 48 }}
-            >
-              <div style={{ width: 80, textAlign: "center" }}>
-                <i class="fa-solid fa-lightbulb"></i>
+          <div class="sliderbar">
+            <Link to="/home/" class="link">
+              <div
+                class="row"
+                style={{ fontSize: 20, alignItems: "center", height: 48 }}
+              >
+                <div style={{ marginLeft: 10, width: 70, textAlign: "center" }}>
+                  <img src={note} alt="no find" style={{ top: 0 }}></img>
+                </div>
+                <div style={{ width: 200, fontSize: 14 }}>Notes</div>
               </div>
-              <div style={{ width: 200, fontSize: 14 }}>Notes</div>
-            </div>
-          </Link>
-
-          <Link to="/" class="link">
-            <div
-              class="row"
-              style={{ fontSize: 20, alignItems: "center", height: 48 }}
-            >
-              <div style={{ width: 80, textAlign: "center" }}>
-                <i class="fa-solid fa-bell"></i>
+            </Link>
+          </div>
+          <div class="sliderbar">
+            <Link to="/home/active" class="link">
+              <div
+                class="row"
+                style={{ fontSize: 20, alignItems: "center", height: 48 }}
+              >
+                <div style={{ marginLeft: 10, width: 70, textAlign: "center" }}>
+                  <img src={remin} alt="no find" style={{ top: 0 }}></img>
+                </div>
+                <div style={{ width: 200, fontSize: 14 }}>Reminders</div>
               </div>
-              <div style={{ width: 200, fontSize: 14 }}>Reminders</div>
-            </div>
-          </Link>
-          <Link to="/" class="link">
-            <div
-              class="row"
-              style={{ fontSize: 20, alignItems: "center", height: 48 }}
-            >
-              <div style={{ width: 80, textAlign: "center" }}>
-                <i class="fa-solid fa-folder-plus"></i>
+            </Link>
+          </div>
+          <div class="sliderbar">
+            <Link to="/home/active" class="link">
+              <div
+                class="row"
+                style={{ fontSize: 20, alignItems: "center", height: 48 }}
+              >
+                <div style={{ marginLeft: 10, width: 70, textAlign: "center" }}>
+                  <img src={archive} alt="no find" style={{ top: 0 }}></img>
+                </div>
+                <div style={{ width: 200, fontSize: 14 }}>Archive</div>
               </div>
-              <div style={{ width: 200, fontSize: 14 }}>Archive</div>
-            </div>
-          </Link>
-          <Link to="/home/trash" class="link">
-            <div
-              class="row"
-              style={{ fontSize: 20, alignItems: "center", height: 48 }}
-            >
-              <div style={{ width: 80, textAlign: "center" }}>
-                <i class="fa-solid fa-trash"></i>
+            </Link>
+          </div>
+          <div class="sliderbar">
+            <Link to="/home/trash" class="link">
+              <div
+                class="row"
+                style={{ fontSize: 20, alignItems: "center", height: 48 }}
+              >
+                <div style={{ marginLeft: 10, width: 70, textAlign: "center" }}>
+                  <img src={trash} alt="no find" style={{ top: 0 }}></img>
+                </div>
+                <div style={{ width: 200, fontSize: 14 }}>Trash</div>
               </div>
-              <div style={{ width: 200, fontSize: 14 }}>Trash</div>
-            </div>
-          </Link>
+            </Link>
+          </div>
           <Footer />
         </div>
         <div class="containerCenterRight">
           <Routes>
             <Route path="/" element={<Notes />} />
-            <Route path="invoices" element={<Trash />} />
+            <Route path="active" element={<Archive />} />
             <Route path="trash" element={<Trash />} />
           </Routes>
         </div>

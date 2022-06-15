@@ -5,6 +5,12 @@ import { TiEdit } from "react-icons/ti";
 import { Button, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { updateNote } from "app/noteSlice";
+
+import { IoMdColorPalette, IoIosAdd } from "react-icons/io";
+import { AiOutlinePicture } from "react-icons/ai";
+import { MdPersonAddAlt1 } from "react-icons/md";
+import { BiBellPlus, BiUndo, BiRedo } from "react-icons/bi";
+import { RiInboxArchiveLine, RiMore2Fill } from "react-icons/ri";
 function Note({ notes, onDelete }) {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -50,7 +56,7 @@ function Note({ notes, onDelete }) {
       <p>{notes.content}</p>
 
       <button onClick={() => onDelete(notes.id)}>
-        <MdDelete size={25} />
+        <MdDelete size={25} kl />
       </button>
 
       <button onClick={() => handleShow()}>
@@ -58,35 +64,43 @@ function Note({ notes, onDelete }) {
       </button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header style={{ height: 30, paddingTop: 20 }}>
           <Modal.Title>
             <input
               defaultValue={notes.title}
               type="text"
               placeholder="Title"
               name="title"
+              style={{ border: "none", height: 30 }}
               onChange={handleChange}
             />
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body style={{ height: 50 }}>
           {" "}
           <p>
             <textarea
               defaultValue={notes.content}
               name="content"
               placeholder="Take a note..."
-              onChange={handleChange}
-              style={{ width: "95%" }}
+              style={{ width: "95%", border: "none" }}
             ></textarea>
           </p>
         </Modal.Body>
         <Modal.Footer>
+          <div>
+            <BiBellPlus size={20} style={{ marginRight: 30 }} />
+            <MdPersonAddAlt1 size={20} style={{ marginRight: 30 }} />
+            <IoMdColorPalette size={20} style={{ marginRight: 30 }} />
+            <AiOutlinePicture size={20} style={{ marginRight: 30 }} />
+            <RiInboxArchiveLine size={20} style={{ marginRight: 30 }} />
+            <RiMore2Fill size={20} style={{ marginRight: 30 }} />
+          </div>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button variant="primary" onClick={UpdateNote}>
-            Save Changes
+            Save
           </Button>
         </Modal.Footer>
       </Modal>
