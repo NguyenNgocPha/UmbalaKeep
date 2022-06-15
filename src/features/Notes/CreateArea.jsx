@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "css/Home.css";
-import { IoMdColorPalette, IoIosAdd } from "react-icons/io";
 import { addNote } from "app/noteSlice";
 import { useDispatch } from "react-redux";
+import { IoMdColorPalette, IoIosAdd } from "react-icons/io";
 import { AiOutlinePicture } from "react-icons/ai";
 import { MdPersonAddAlt1 } from "react-icons/md";
 import { BiBellPlus, BiUndo, BiRedo } from "react-icons/bi";
