@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../css/Header.css";
-import { auth, db } from "../firebase-config";
+import { auth } from "../firebase-config";
 import Notes from "../features/Notes";
 import Footer from "./Footer";
 import Trash from "../features/Trash";
 
-import SignUp from "../features/login/SignUp";
 import imdga from "asset/search.svg";
 import note from "asset/note.svg";
 import remin from "asset/remin.svg";
@@ -31,7 +30,7 @@ function Header() {
       })
       .catch((error) => alert(error.message));
   };
-  const [notes, setNotes] = useState([]);
+
   return (
     <div>
       <div class="containerHeader">
