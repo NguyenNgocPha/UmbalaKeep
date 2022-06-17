@@ -51,19 +51,24 @@ function Note({ notes, onDelete }) {
     return unsub;
   }, []);
   return (
-    <div className="note">
-      <h1>{notes.title}</h1>
-      <p>{notes.content}</p>
+    <div>
+      <div className="note" onClick={() => handleShow()}>
+        <h1>{notes.title}</h1>
+        <p>{notes.content}</p>
 
-      <button onClick={() => onDelete(notes.id)}>
-        <MdDelete size={25} kl />
-      </button>
+        <button onClick={() => onDelete(notes.id)}>
+          <MdDelete size={25} kl />
+        </button>
 
-      <button onClick={() => handleShow()}>
-        <TiEdit size={25} />
-      </button>
-
-      <Modal show={show} onHide={handleClose}>
+        <button onClick={() => handleShow()}>
+          <TiEdit size={25} />
+        </button>
+      </div>
+      <Modal
+        show={show}
+        style={{ marginTop: 120, textAlign: "center" }}
+        onHide={handleClose}
+      >
         <Modal.Header style={{ height: 30, paddingTop: 20 }}>
           <Modal.Title>
             <input
@@ -96,6 +101,7 @@ function Note({ notes, onDelete }) {
             <RiInboxArchiveLine size={20} style={{ marginRight: 30 }} />
             <RiMore2Fill size={20} style={{ marginRight: 30 }} />
           </div>
+
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>

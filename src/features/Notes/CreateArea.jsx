@@ -68,18 +68,19 @@ function CreateArea({ }) {
               onChange={handleChange}
               rows={isExpanded ? 1 : 1}
             >
+
             </textarea>
             <div class='textareaFooter' style={{ display: isExpanded ? 'flex' : 'none' }}>
-              <BiBellPlus size={20} style={{ marginRight: 30 }} />
-              <MdPersonAddAlt1 size={20} style={{ marginRight: 30 }} />
-              <IoMdColorPalette size={20} style={{ marginRight: 30 }} />
-              <AiOutlinePicture size={20} style={{ marginRight: 30 }} />
-              <RiInboxArchiveLine size={20} style={{ marginRight: 30 }} />
-              <RiMore2Fill size={20} style={{ marginRight: 30 }} />
-              <BiUndo size={20} style={{ marginRight: 30 }} />
-              <BiRedo size={20} style={{ marginRight: 30 }} />
+              <BiBellPlus size={18} style={{ marginRight: 30 }} />
+              <MdPersonAddAlt1 size={18} style={{ marginRight: 30 }} />
+              <IoMdColorPalette size={18} style={{ marginRight: 30 }} />
+              <AiOutlinePicture size={18} style={{ marginRight: 30 }} />
+              <RiInboxArchiveLine size={18} style={{ marginRight: 30 }} />
+              <RiMore2Fill size={18} style={{ marginRight: 30 }} />
+              <BiUndo size={18} style={{ marginRight: 30 }} />
+              <BiRedo size={18} style={{ marginRight: 30 }} />
               <button type="button" onClick={submitButton} style={{ marginRight: 30 }}>add
-                <IoIosAdd size={20} />
+
               </button>
               <button type="button" onClick={ExithandleExpanded} style={{ marginRight: 30 }}>close
 
